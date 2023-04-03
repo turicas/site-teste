@@ -23,5 +23,7 @@ Execute o seguinte código:
 import requests
 
 token = "SEU TOKEN"
-response = requests.post(f"https://api.telegram.org/bot{token}/setWebhook", ...)
+url = "https://site-teste-turicas.onrender.com/telegram-bot"
+response = requests.post(f"https://api.telegram.org/bot{token}/setWebhook", data={"url": url})
+print(response.text)
 ```
