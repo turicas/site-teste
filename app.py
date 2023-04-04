@@ -6,6 +6,8 @@ from flask import Flask, request
 from oauth2client.service_account import ServiceAccountCredentials
 from tchan import ChannelScraper
 
+from scraper import ultimas_promocoes
+
 
 TELEGRAM_API_KEY = os.environ["TELEGRAM_API_KEY"]
 TELEGRAM_ADMIN_ID = os.environ["TELEGRAM_ADMIN_ID"]
@@ -17,19 +19,6 @@ api = gspread.authorize(conta)
 planilha = api.open_by_key("1ZDyxhXlCtCjMbyKvYmMt_8jAKN5JSoZ7x3MqlnoyzAM")
 sheet = planilha.worksheet("Sheet1")
 app = Flask(__name__)
-
-
-def ultimas_promocoes():
-  scraper = ChannelScraper()
-  contador = 0
-  resultado = []
-  for message in scraper.messages("promocoeseachadinhos"):
-    contador += 1
-    texto = message.text.strip().splitlines()[0]
-    resultado.append(f"{message.created_at} {texto}")
-    if contador == 10:
-      return resultado
-
     
 menu = """
 <a href="/">Página inicial</a> | <a href="/promocoes">PROMOÇÕES</a> | <a href="/sobre">Sobre</a> | <a href="/contato">Contato</a>
