@@ -27,3 +27,15 @@ url = "https://site-teste-turicas.onrender.com/telegram-bot"
 response = requests.post(f"https://api.telegram.org/bot{token}/setWebhook", data={"url": url})
 print(response.text)
 ```
+
+## Próximos passos
+
+- [ ] Implementar Web scraping
+  - [x] Criar código para raspar o site
+  - [x] Alimentar planilha com resultado da raspagem
+  - [ ] Configurar Pipedream para chamar código 1x por dia
+- [ ] Implementar envio de emails
+  - [ ] Coletar dados que foram raspados na planilha
+  - [ ] Coletar emails de quem se cadastrou
+  - [ ] Enviar emails
+  - [ ] Configurar Pipedream para chamar 1x por semana
