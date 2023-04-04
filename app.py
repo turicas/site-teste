@@ -104,3 +104,18 @@ def telegram_bot():
   resposta = requests.post(f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendMessage", data=nova_mensagem)
   print(resposta.text)
   return "ok"
+
+
+def enviar_foto():
+  # Esboço
+  ...
+  chart.save("chart.png")
+  with open("chart.png", mode="rb") as arquivo:
+    conteudo = arquivo.read()
+  mensagem = {"chat_id": ..., "caption": "gráfico X"}
+  files = {"photo": ("grafico.png", conteudo)}
+  resposta = requests.post(
+    f"https://api.telegram.org./bot{TELEGRAM_API_KEY}/sendPhoto", 
+    data=mensagem, 
+    files=files,
+  )
